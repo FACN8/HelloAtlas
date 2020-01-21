@@ -1,0 +1,24 @@
+{
+  "name": "HelloAtlas",
+  "version": "1.0.0",
+  "description": "Hitchhikers Guide to Countries - By Orange Room Factory",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN8/HelloAtlas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN8/HelloAtlas/issues"
+  },
+  "homepage": "https://github.com/FACN8/HelloAtlas#readme",
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
+}
