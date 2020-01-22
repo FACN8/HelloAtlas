@@ -1,14 +1,16 @@
 const fs = require("fs");
 const path = require("path");
-const logic = require(".\logic.js")
+const logic = require("./logic.js")
 
+
+/* Handles home directory and opens index.html*/
 const handleHome = (request, response) => {
     const indexFilePath = path.join(__dirname, '..', 'public', 'index.html');
     fs.readFile(indexFilePath, (err, file) => {
         if (err) {
             console.log(err);
             response.writeHead(500);
-            response.end('an error occured');
+            response.end('Our Server is Down!');
         } else {
             response.writeHead(200, { 'Content-Type': 'text/html' });
             response.end(file)
@@ -16,6 +18,7 @@ const handleHome = (request, response) => {
     })
 }
 
+/* Handles requests of files from public directory*/
 const handlePublic = (request, response) => {
     const endpoint = request.url;
     const extension = endpoint.split(".")[1];
@@ -32,8 +35,8 @@ const handlePublic = (request, response) => {
     fs.readFile(filePath, (error, file) => {
         if (error) {
             console.log(error);
-            response.writeHead(500);
-            response.end("Cant handle this!");
+            response.writeHead(404);
+            response.end("Oh no! File not Found!");
         } else {
             response.writeHead(200, { "Content-Type": extensionType[extension] });
             response.end(file);
@@ -41,38 +44,31 @@ const handlePublic = (request, response) => {
     });
 };
 
+/* Handles typing requests*/
 const handleType = (request, response) => {
-    const postsPath = path.join(__dirname, "..", "src/posts.json");
-
-    fs.readFile(postsPath, (error, file) => {
-        if (error) {
-            console.log(error);
-            response.writeHead(500);
-            response.end("problem looking for typing");
-        } else {
-            response.end(createOptions());
-        }
-    });
+    const endpoint = request.url.split("/")[2];
+    console.log(endpoint);
+    response.writeHead(200);
+    response.end(createOptions(endpoint))
 };
 
 const handleSearch = (request, response) => {
-    const postsPath = path.join(__dirname, "..", "src/posts.json");
-
-    fs.readFile(postsPath, (error, file) => {
-        if (error) {
-            console.log(error);
-            response.writeHead(500);
-            response.end("ah fuck we got shit on by an error");
-        } else {
-            response.writeHead(200, { "Content-Type": "application/json" });
-            response.end(file);
-        }
-    });
+    handleError(request, response);
+    // fs.readFile(postsPath, (error, file) => {
+    //     if (error) {
+    //         console.log(error);
+    //         response.writeHead(500);
+    //         response.end("ah fuck we got shit on by an error");
+    //     } else {
+    //         response.writeHead(200, { "Content-Type": "application/json" });
+    //         response.end(file);
+    //     }
+    // });
 };
 
 const handleError = (request, response) => {
     response.writeHead(404);
-    response.end("ah fuck we got shit on by an error");
+    response.end("Oh no! File not Found!");
 }
 
 
