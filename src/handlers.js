@@ -46,9 +46,8 @@ const handlePublic = (request, response) => {
 /* Handles typing requests*/
 const handleType = (request, response) => {
     const endpoint = request.url.split("/")[2];
-    console.log("endpoint");
     response.writeHead(200);
-    response.end(createOptions(endpoint))
+    response.end(JSON.stringify(createOptions(endpoint)))
 };
 
 const handleSearch = (request, response) => {
