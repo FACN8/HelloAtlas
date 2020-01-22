@@ -30,8 +30,7 @@ const handlePublic = (request, response) => {
         jpg: "image/x-icon",
         png: "image/x-icon"
     };
-    const filePath = path.join(__dirname, "..", "/public/", endpoint);
-    console.log(filePath);
+    const filePath = path.join(__dirname, "..", endpoint);
     fs.readFile(filePath, (error, file) => {
         if (error) {
             console.log(error);
@@ -47,7 +46,7 @@ const handlePublic = (request, response) => {
 /* Handles typing requests*/
 const handleType = (request, response) => {
     const endpoint = request.url.split("/")[2];
-    console.log(endpoint);
+    console.log("endpoint");
     response.writeHead(200);
     response.end(createOptions(endpoint))
 };
