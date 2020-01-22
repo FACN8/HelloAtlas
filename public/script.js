@@ -1,19 +1,20 @@
-// // A listener maybe for typing a character ? 
+// A listener maybe for typing a character ? 
 
+var textInput = document.querySelector('#ajax');
+var xhr = new XMLHttpRequest();
 
+textInput.oninput = function() {
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var data = xhr.responseText;
+            createDataSet(data);
+        }
+    }
+    xhr.open('GET', '/type/' + textInput.value, true);
+    xhr.send();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-// // Create drop down list of suggestions based on data
+// Create drop down list of suggestions based on data
 function createDataSet(data) {
     var datalist = document.getElementById("json-datalist");
     while (datalist.firstChild) {
@@ -26,7 +27,5 @@ function createDataSet(data) {
     });
 
 }
-var x = ["israel", "ireland", "istonia", "istanbol"];
-createDataSet(x)
 
-// // A listener for submit event / click
+// A listener for submit event / click

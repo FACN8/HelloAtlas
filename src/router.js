@@ -9,10 +9,8 @@ const router = function(request, response) {
     } else if (url.indexOf('/public/') !== -1) {
         handlers.handlePublic(request, response);
     } else if (url.indexOf('/type') !== -1) {
-        console.log("/type")
         handlers.handleType(request, response);
     } else if (url === '/search') {
-        console.log("/search")
         handlers.handleSearch(request, response);
     } else {
         handlers.handleError(request, response);
