@@ -6,11 +6,15 @@ const router = function(request, response) {
 
     /*--- Managing Different URL ends ---*/
     if (url === '/') {
-        response.end("Success")
-    } else if (url === 'TBD') {
-
+        handlers.handleHome(request, response);
+    } else if (url.indexOf('/public/' !== -1)) {
+        handlers.handlePublic(request, response);
+    } else if (url.indexOf('/type' !== -1)) {
+        handlers.handleType(request, response);
+    } else if (url === '/search') {
+        handlers.handleSearch(request, response);
     } else {
-        response.end("Wrong")
+        handlers.handleError(request, response);
     }
 }
 
