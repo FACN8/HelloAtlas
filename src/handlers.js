@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const logic = require("./logic.js")
+const createOptions = require("./logic.js")
 
 
 /* Handles home directory and opens index.html*/
