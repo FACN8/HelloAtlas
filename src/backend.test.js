@@ -1,17 +1,23 @@
 //  Test logic, handlers,server
 
 
-// // const romanzier = require('./romanzier')
+const logic = require('./logic')
 
-// // describe('is jest working', function () {
-// //     it('should be working ', function () {
-// //         expect(1 + 1).toBe(2);
-// //     });
-// // });
+const optionsWithI = ["Iceland",
+"India",
+"Indonesia",
+"Iran (Islamic Republic of)",
+"Iraq"];
 
-// // describe('Roman Numerals', function () {
-// //     it('should return I for 1', function () {
-// //         const result = romanzier(1);
-// //         expect(result).toBe('I');
-// //     });
-// }   
+describe('is jest working', function () {
+    it('should be working ', function () {
+        expect(1 + 1).toBe(2);
+    });
+});
+
+describe('Create options lists', function () {
+    it('should return the first 5 options that starts with I', function () {
+        const result = logic('i');
+        expect(result).toEqual(optionsWithI);
+    });
+} );  
