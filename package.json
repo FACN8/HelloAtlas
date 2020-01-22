@@ -4,8 +4,9 @@
   "description": "Hitchhikers Guide to Countries - By Orange Room Factory",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watchAll"
+	"start": "node src/server.js", 
+	"test": "jest",
+	"test:watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
