@@ -1,8 +1,9 @@
+const router = require('./router');
 const http = require('http');
-const router = require('./src/router');
 const server = http.createServer(router);
 
-server.listen(SERV, () => {
-    console.log('Server is listening on port 5050,armed and ready!');
+require('dotenv').config();
 
+server.listen(process.env.SERVER_PORT, () => {
+    console.log('Server is listening on port 8080,armed and ready!');
 });
