@@ -32,8 +32,7 @@ const handlePublic = (request, response) => {
     const filePath = path.join(__dirname, "..", endpoint);
     fs.readFile(filePath, (error, file) => {
         if (error) {
-            response.writeHead(404);
-            response.end("Oh no! File not Found!");
+                handleError(request, response);
         } else {
             response.writeHead(200, { "Content-Type": extensionType[extension] });
             response.end(file);
