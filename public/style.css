@@ -43,6 +43,12 @@ h3 {
     background-color: rgba(31, 28, 28, 0.295);
 }
 
+@media screen and (max-width: 590px) {
+   .country-div {
+       width:100%;
+    }
+}
+
 .main-container {
     width: 65%;
     text-align: center;
