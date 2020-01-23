@@ -51,17 +51,8 @@ const handleType = (request, response) => {
 };
 
 const handleSearch = (request, response) => {
-    handleError(request, response);
-    // fs.readFile(postsPath, (error, file) => {
-    //     if (error) {
-    //         console.log(error);
-    //         response.writeHead(500);
-    //         response.end("ah fuck we got shit on by an error");
-    //     } else {
-    //         response.writeHead(200, { "Content-Type": "application/json" });
-    //         response.end(file);
-    //     }
-    // });
+    // response.writeHead(301, { "location": 'public/index.html' })
+    // response.end();
 };
 
 const handleError = (request, response) => {
