@@ -8,7 +8,6 @@ const handleHome = (request, response) => {
     const indexFilePath = path.join(__dirname, '..', 'public', 'index.html');
     fs.readFile(indexFilePath, (err, file) => {
         if (err) {
-            console.log(err);
             response.writeHead(500);
             response.end('Our Server is Down!');
         } else {
@@ -33,9 +32,7 @@ const handlePublic = (request, response) => {
     const filePath = path.join(__dirname, "..", endpoint);
     fs.readFile(filePath, (error, file) => {
         if (error) {
-            console.log(error);
-            response.writeHead(404);
-            response.end("Oh no! File not Found!");
+            handleError(request, response);
         } else {
             response.writeHead(200, { "Content-Type": extensionType[extension] });
             response.end(file);
@@ -50,10 +47,6 @@ const handleType = (request, response) => {
     response.end(JSON.stringify(createOptions(endpoint)))
 };
 
-const handleSearch = (request, response) => {
-    // response.writeHead(301, { "location": 'public/index.html' })
-    // response.end();
-};
 
 const handleError = (request, response) => {
     response.writeHead(404);
@@ -61,4 +54,4 @@ const handleError = (request, response) => {
 }
 
 
-module.exports = { handleHome, handlePublic, handleSearch, handleType, handleError }
+module.exports = { handleHome, handlePublic, handleType, handleError }
