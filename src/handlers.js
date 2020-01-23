@@ -8,7 +8,6 @@ const handleHome = (request, response) => {
     const indexFilePath = path.join(__dirname, '..', 'public', 'index.html');
     fs.readFile(indexFilePath, (err, file) => {
         if (err) {
-            console.log(err);
             response.writeHead(500);
             response.end('Our Server is Down!');
         } else {
@@ -33,7 +32,6 @@ const handlePublic = (request, response) => {
     const filePath = path.join(__dirname, "..", endpoint);
     fs.readFile(filePath, (error, file) => {
         if (error) {
-            console.log(error);
             response.writeHead(404);
             response.end("Oh no! File not Found!");
         } else {
