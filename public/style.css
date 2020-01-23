@@ -68,3 +68,7 @@ h3 {
     font-size: 20px;
     margin-left: 15px;
 }
+
+#submit-btn:hover {
+    cursor:pointer;
+}
