@@ -32,7 +32,7 @@ const handlePublic = (request, response) => {
     const filePath = path.join(__dirname, "..", endpoint);
     fs.readFile(filePath, (error, file) => {
         if (error) {
-                handleError(request, response);
+            handleError(request, response);
         } else {
             response.writeHead(200, { "Content-Type": extensionType[extension] });
             response.end(file);
@@ -47,19 +47,6 @@ const handleType = (request, response) => {
     response.end(JSON.stringify(createOptions(endpoint)))
 };
 
-const handleSearch = (request, response) => {
-    handleError(request, response);
-    // fs.readFile(postsPath, (error, file) => {
-    //     if (error) {
-    //         console.log(error);
-    //         response.writeHead(500);
-    //         response.end("ah fuck we got shit on by an error");
-    //     } else {
-    //         response.writeHead(200, { "Content-Type": "application/json" });
-    //         response.end(file);
-    //     }
-    // });
-};
 
 const handleError = (request, response) => {
     response.writeHead(404);
@@ -67,4 +54,4 @@ const handleError = (request, response) => {
 }
 
 
-module.exports = { handleHome, handlePublic, handleSearch, handleType, handleError }
+module.exports = { handleHome, handlePublic, handleType, handleError }
